@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <title>Prueba Quintus</title>
+        <script src="lib/quintus.js"> </script>
+        <script src="lib/quintus_scenes.js"> </script>
+        <script src="lib/quintus_2d.js"> </script>
+        <script src="lib/quintus_sprites.js"> </script>
+        <script src="lib/quintus_input.js"> </script>
+        <script src="lib/quintus_anim.js"> </script>
+        <script src="lib/quintus_touch.js"> </script>
+        <script src="lib/quintus_ui.js"> </script>
+    </head>
+    <body>
+        <script>
+            window.onload = function(){
+                var Q = window.Q = Quintus().include("Scenes,2D")
+                    .setup({width:320, height:480});
+                //Creamos la escena nivel1
+                Q.scene("nivel1",function(stage){
+                    var colisiones = new Q.TileLayer({dataAsset: "collision.json",sheet:"fondo"});
+                    var background = new Q.TileLayer({dataAsset: "fondo.json",sheet:"fondo"});
+                    stage.collisionLayer(colisiones);
+                    stage.insert(background);
+                });
+
+                Q.load("fondo.png, fondo.json,collision.json", function(){
+                    Q.sheet("fondo","fondo.png", {tilew:32, tileh:32});
+                    Q.stageScene("nivel1",0);
+                });
+            }
+        </script>
+    </body>
+</html>
