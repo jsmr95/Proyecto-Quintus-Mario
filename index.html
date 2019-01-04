@@ -27,14 +27,15 @@
                     //Creo jugador principal
                     var principal = new Q.Sprite({
                         x:50,
-                        y:50,
+                        y:150,
                         sheet:"jugador"
                     });
                     stage.insert(principal);
                 });
 
-                Q.load("fondo.png, fondo.json,collision.json", function(){
+                Q.load("sprites.json,sprites.png,fondo.png, fondo.json,collision.json", function(){
                     Q.sheet("fondo","fondo.png", {tilew:32, tileh:32});
+                    Q.sheet("sprites.png","sprites.json");
                     Q.stageScene("nivel1",0);
                 });
             }
