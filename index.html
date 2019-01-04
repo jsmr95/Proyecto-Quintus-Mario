@@ -24,6 +24,13 @@
                     var background = new Q.TileLayer({dataAsset: "fondo.json",sheet:"fondo"});
                     stage.collisionLayer(colisiones);
                     stage.insert(background);
+                    //Creo jugador principal
+                    var principal = new Q.Sprite({
+                        x:50,
+                        y:50,
+                        sheet:"jugador"
+                    });
+                    stage.insert(principal);
                 });
 
                 Q.load("fondo.png, fondo.json,collision.json", function(){
