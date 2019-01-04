@@ -17,7 +17,7 @@
         <script>
             window.onload = function(){
                 var Q = window.Q = Quintus().include("Sprites,Scenes,2D")
-                    .setup({width:320, height:480});
+                    .setup({width:380, height:480});
                 //Creamos la escena nivel1
                 Q.scene("nivel1",function(stage){
                     var colisiones = new Q.TileLayer({dataAsset: "collision.json",sheet:"fondo"});
