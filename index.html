@@ -18,24 +18,35 @@
             window.onload = function(){
                 var Q = window.Q = Quintus().include("Sprites,Scenes,2D")
                     .setup({width:380, height:480});
+                //Creo los valores de colisiones
+                Q.SPRITE_NONE = 0;
+                Q.SPRITE_OTROS = 1;
+                Q.SPRITE_PJ = 2;
+
                 //Creamos la escena nivel1
                 Q.scene("nivel1",function(stage){
-                    var colisiones = new Q.TileLayer({dataAsset: "collision.json",sheet:"fondo"});
-                    var background = new Q.TileLayer({dataAsset: "fondo.json",sheet:"fondo"});
+                    var colisiones = new Q.TileLayer({dataAsset: "collision.json",sheet:"fondo",type:Q.SPRITE_OTROS});
+                    var background = new Q.TileLayer({dataAsset: "fondo.json",sheet:"fondo",type:Q.SPRITE_NONE});
                     stage.collisionLayer(colisiones);
                     stage.insert(background);
+
                     //Creo jugador principal
                     var principal = new Q.Sprite({
                         x:30,
-                        y:147,
-                        sheet:"jugador"
+                        y:10,
+                        sheet:"jugador",
+                        type:Q.SPRITE_PJ,
+                        collisionMask: Q.SPRITE_OTROS
                     });
                     //Creo final juego
                     var meta = new Q.Sprite({
                         x:500,
-                        y:147,
-                        sheet:"meta"
+                        y:145,
+                        sheet:"meta",
+                        type:Q.SPRITE_OTROS
                     });
+                    principal.add('2d');
+                    meta.add('2d');
                     stage.insert(principal);
                     stage.insert(meta);
                 });
