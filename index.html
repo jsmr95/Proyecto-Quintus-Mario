@@ -30,7 +30,14 @@
                         y:80,
                         sheet:"jugador"
                     });
+                    //Creo final juego
+                    var meta = new Q.Sprite({
+                        x:50,
+                        y:300,
+                        sheet:"meta"
+                    });
                     stage.insert(principal);
+                    stage.insert(meta);
                 });
 
                 Q.load("personajes.json,personajes.png,fondo.png, fondo.json,collision.json", function(){
