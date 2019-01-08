@@ -43,7 +43,10 @@
                     maxY:background.p.h});
                     //Agrego evento al personaje
                     stage.on("keydown",function(e){
-                        console.log(e.key);
+                        console.log("key");
+                    });
+                    stage.on("click",function(e){
+                        console.log("click");
                     });
                     //Creo final juego
                     var meta = new Q.Sprite({
