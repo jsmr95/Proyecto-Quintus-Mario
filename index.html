@@ -41,7 +41,20 @@
                     maxY:background.p.h});
                     //Agrego evento al personaje
                     window.addEventListener("keydown",function(e){
-                        console.log(e.key);
+                        switch (e.key) {
+                            case "ArrowRight":
+                                principal.p.vx = 70;
+                                break;
+                            case "ArrowLeft":
+                                principal.p.vx = -70;
+                                break;
+                            case "ArrowUp":
+                                e.preventDefault();
+                                break;
+                            case "ArrowDown":
+                                e.preventDefault();
+                                break;
+                        }
                     });
 
                     //Creo final juego
