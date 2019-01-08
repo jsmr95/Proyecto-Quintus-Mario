@@ -32,6 +32,7 @@
 
                     //Creo jugador principal
                     var principal = new Q.Sprite({
+                        vx=20,
                         x:30,
                         y:10,
                         sheet:"jugador",
@@ -43,7 +44,7 @@
                     maxY:background.p.h});
                     //Agrego evento al personaje
                     principal.on("keydown",function(e){
-                        console.log("key");
+                        principal.p.vx = 50;
                     });
                     principal.on("click",function(e){
                         console.log("click");
