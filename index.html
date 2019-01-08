@@ -42,10 +42,10 @@
                     stage.add("viewport").follow(principal,{x:true,y:true},{minX:0,maxX:background.p.w,minY:0,
                     maxY:background.p.h});
                     //Agrego evento al personaje
-                    stage.on("keydown",function(e){
+                    Q.on("keydown",function(e){
                         console.log("key");
                     });
-                    stage.on("click",function(e){
+                    Q.on("click",function(e){
                         console.log("click");
                     });
                     //Creo final juego
