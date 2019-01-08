@@ -43,8 +43,8 @@
                     stage.add("viewport").follow(principal,{x:true,y:true},{minX:0,maxX:background.p.w,minY:0,
                     maxY:background.p.h});
                     //Agrego evento al personaje
-                    principal.on("keydown",function(e){
-                        principal.p.vx = 50;
+                    stage.on("keydown",function(){
+                        principal.p.vx = 150;
                     });
                     principal.on("click",function(e){
                         console.log("click");
