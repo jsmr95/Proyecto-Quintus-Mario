@@ -38,6 +38,9 @@
                         type:Q.SPRITE_PJ,
                         collisionMask: Q.SPRITE_OTROS
                     });
+                    //Añado el viewport
+                    stage.add("viewport").follow(principal,{x:true,y:true},{minX:0,maxX:background.p.w,minY:0,
+                    maxY:background.p.h});
                     //Creo final juego
                     var meta = new Q.Sprite({
                         x:500,
