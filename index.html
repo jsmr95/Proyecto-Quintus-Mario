@@ -41,10 +41,10 @@
                     stage.add("viewport").follow(principal,{x:true,y:true},{minX:0,maxX:background.p.w,minY:0,
                     maxY:background.p.h});
                     //Agrego evento al personaje
-                    stage.on("click",function(){
+                    stage.addEventListener("click",function(){
                         principal.p.vx = 150;
                     });
-                    
+
                     //Creo final juego
                     var meta = new Q.Sprite({
                         x:background.p.w - 35,
