@@ -30,7 +30,6 @@
                     stage.insert(background);
                     //Creo jugador principal
                     var principal = new Q.Sprite({
-                        vx:20,
                         x:30,
                         y:10,
                         sheet:"jugador",
@@ -41,8 +40,8 @@
                     stage.add("viewport").follow(principal,{x:true,y:true},{minX:0,maxX:background.p.w,minY:0,
                     maxY:background.p.h});
                     //Agrego evento al personaje
-                    window.addEventListener("click",function(){
-                        principal.p.vx = 150;
+                    window.addEventListener("keydown",function(){
+                        console.log(e.key);
                     });
 
                     //Creo final juego
