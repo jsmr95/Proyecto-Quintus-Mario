@@ -16,8 +16,8 @@
     <body>
         <script>
             window.onload = function(){
-                var Q = window.Q = Quintus().include("Sprites,Scenes,2D")
-                    .setup({width:380, height:480});
+                var Q = window.Q = Quintus().include("Sprites,Scenes,2D,UI,Touch,Anim,Input")
+                    .setup({width:380, height:480}).touch();
                 //Creo los valores de colisiones
                 Q.SPRITE_NONE = 0;
                 Q.SPRITE_OTROS = 1;
