@@ -41,7 +41,7 @@
                     stage.add("viewport").follow(principal,{x:true,y:true},{minX:0,maxX:background.p.w,minY:0,
                     maxY:background.p.h});
                     //Agrego evento al personaje
-                    stage.addEventListener("click",function(){
+                    window.addEventListener("click",function(){
                         principal.p.vx = 150;
                     });
 
