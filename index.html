@@ -40,30 +40,27 @@
                     stage.add("viewport").follow(principal,{x:true,y:true},{minX:0,maxX:background.p.w,minY:0,
                     maxY:background.p.h});
                     //Agrego evento al personaje
-                    window.addEventListener("keydown",function(e){
-                        switch (e.key) {
-                            case "ArrowRight":
-                                principal.p.vx = 80;
-                                break;
-                            case "ArrowLeft":
-                                principal.p.vx = -80;
-                                break;
-                            case "ArrowUp":
-                                e.preventDefault();
-                                principal.p.gravity = 0;
-                                principal.p.vy = 80;
-                                break;
-                            case "ArrowDown":
-                                e.preventDefault();
-                                break;
-                        }
-                    });
-                    window.addEventListener("keyup",function(){
-                        principal.p.vx = 0;
-                        principal.p.vy = 0;
-                        principal.p.gravity = 1;
-                        principal.p.vy = 0;
-                    })
+                    // window.addEventListener("keydown",function(e){
+                    //     switch (e.key) {
+                    //         case "ArrowRight":
+                    //             principal.p.vx = 100;
+                    //             break;
+                    //         case "ArrowLeft":
+                    //             principal.p.vx = -100;
+                    //             break;
+                    //         case "ArrowUp":
+                    //             e.preventDefault();
+                    //             principal.p.gravity = 0;
+                    //             principal.p.vy = 100;
+                    //             break;
+                    //     }
+                    // });
+                    // window.addEventListener("keyup",function(){
+                    //     principal.p.vx = 0;
+                    //     principal.p.vy = 0;
+                    //     principal.p.gravity = 1;
+                    //     principal.p.vy = 0;
+                    // })
 
                     //Creo final juego
                     var meta = new Q.Sprite({
@@ -73,6 +70,8 @@
                         type:Q.SPRITE_OTROS
                     });
                     principal.add('2d');
+                    principal.add('platformerControls');
+                    principal.add('stepControls');
                     meta.add('2d');
                     stage.insert(principal);
                     stage.insert(meta);
