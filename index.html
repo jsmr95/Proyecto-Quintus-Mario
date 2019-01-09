@@ -70,8 +70,9 @@
                         type:Q.SPRITE_OTROS
                     });
                     principal.add('2d');
-                    principal.add('platformerControls').step(80);
-                    principal.add('stepControls').step(80);
+                    principal.add('platformerControls');
+                    principal.add('stepControls');
+                    principal.step(80);
                     meta.add('2d');
                     stage.insert(principal);
                     stage.insert(meta);
