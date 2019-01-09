@@ -43,19 +43,27 @@
                     window.addEventListener("keydown",function(e){
                         switch (e.key) {
                             case "ArrowRight":
-                                principal.p.vx = 70;
+                                principal.p.vx = 80;
                                 break;
                             case "ArrowLeft":
-                                principal.p.vx = -70;
+                                principal.p.vx = -80;
                                 break;
                             case "ArrowUp":
                                 e.preventDefault();
+                                principal.p.gravity = 0;
+                                principal.p.vy = 80;
                                 break;
                             case "ArrowDown":
                                 e.preventDefault();
                                 break;
                         }
                     });
+                    window.addEventListener("keyup",function(){
+                        principal.p.vx = 0;
+                        principal.p.vy = 0;
+                        principal.p.gravity = 1;
+                        principal.p.vy = 0;
+                    })
 
                     //Creo final juego
                     var meta = new Q.Sprite({
