@@ -19,16 +19,19 @@
       window.onload = function(){
         var Q = window.Q = Quintus().include("Sprites,Scenes,2D,UI,Touch,Anim,Input")
           .setup({width:380, height:480}).touch();
+
         //Creo los valores de colisiones
         Q.SPRITE_NONE = 0;
         Q.SPRITE_OTROS = 1;
         Q.SPRITE_PJ = 2;
+
         //Creamos la escena nivel1
         Q.scene("nivel1",function(stage){
             var colisiones = new Q.TileLayer({dataAsset: "collision.json",sheet:"fondo",type:Q.SPRITE_OTROS});
             var background = new Q.TileLayer({dataAsset: "fondo.json",sheet:"fondo",type:Q.SPRITE_NONE});
             stage.collisionLayer(colisiones);
             stage.insert(background);
+
             //Creo jugador principal
             var principal = new Q.Sprite({
                 x:30,
@@ -37,9 +40,11 @@
                 type:Q.SPRITE_PJ,
                 collisionMask: Q.SPRITE_OTROS
             });
+
             //Añado el viewport
             stage.add("viewport").follow(principal,{x:true,y:true},{minX:0,maxX:background.p.w,minY:0,
             maxY:background.p.h});
+
             //Agrego evento al personaje
             window.addEventListener("keydown",function(e){
               switch (e.key) {
@@ -54,7 +59,7 @@
                   break;
               }
             });
-            
+
           window.addEventListener("keyup",function(){
             switch (e.key) {
               case "ArrowRight":
@@ -76,13 +81,13 @@
               sheet:"meta",
               type:Q.SPRITE_OTROS
           });
+
           principal.add('2d');
-          // principal.add('platformerControls');
-          // principal.add('stepControls');
           meta.add('2d');
           stage.insert(principal);
           stage.insert(meta);
         });
+
         Q.load("personajes.json,personajes.png,fondo.png, fondo.json,collision.json", function(){
           Q.sheet("fondo","fondo.png", {tilew:32, tileh:32});
           Q.compileSheets("personajes.png","personajes.json");
