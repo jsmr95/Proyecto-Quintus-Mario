@@ -1,84 +1,93 @@
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no" />
-        <title>Prueba Quintus</title>
-        <script src="lib/quintus.js"> </script>
-        <script src="lib/quintus_scenes.js"> </script>
-        <script src="lib/quintus_2d.js"> </script>
-        <script src="lib/quintus_sprites.js"> </script>
-        <script src="lib/quintus_input.js"> </script>
-        <script src="lib/quintus_anim.js"> </script>
-        <script src="lib/quintus_touch.js"> </script>
-        <script src="lib/quintus_ui.js"> </script>
-    </head>
-    <body>
-        <script>
-            window.onload = function(){
-                var Q = window.Q = Quintus().include("Sprites,Scenes,2D,UI,Touch,Anim,Input")
-                    .setup({width:380, height:480}).touch();
-                //Creo los valores de colisiones
-                Q.SPRITE_NONE = 0;
-                Q.SPRITE_OTROS = 1;
-                Q.SPRITE_PJ = 2;
-                //Creamos la escena nivel1
-                Q.scene("nivel1",function(stage){
-                    var colisiones = new Q.TileLayer({dataAsset: "collision.json",sheet:"fondo",type:Q.SPRITE_OTROS});
-                    var background = new Q.TileLayer({dataAsset: "fondo.json",sheet:"fondo",type:Q.SPRITE_NONE});
-                    stage.collisionLayer(colisiones);
-                    stage.insert(background);
-                    //Creo jugador principal
-                    var principal = new Q.Sprite({
-                        x:30,
-                        y:10,
-                        sheet:"jugador",
-                        type:Q.SPRITE_PJ,
-                        collisionMask: Q.SPRITE_OTROS
-                    });
-                    //Añado el viewport
-                    stage.add("viewport").follow(principal,{x:true,y:true},{minX:0,maxX:background.p.w,minY:0,
-                    maxY:background.p.h});
-                    //Agrego evento al personaje
-                    window.addEventListener("keydown",function(e){
-                        switch (e.key) {
-                            case "ArrowRight":
-                                principal.p.vx = 100;
-                                break;
-                            case "ArrowLeft":
-                                principal.p.vx = -100;
-                                break;
-                            case "ArrowUp":
-                                principal.p.vy = 100;
-                                break;
-                        }
-                    });
-                    window.addEventListener("keyup",function(){
-                        principal.p.vx = 0;
-                        principal.p.vy = 0;
-                        principal.p.vy = 0;
-                    })
-
-                    //Creo final juego
-                    var meta = new Q.Sprite({
-                        x:background.p.w - 35,
-                        y:145,
-                        sheet:"meta",
-                        type:Q.SPRITE_OTROS
-                    });
-                    principal.add('2d');
-                    // principal.add('platformerControls');
-                    // principal.add('stepControls');
-                    meta.add('2d');
-                    stage.insert(principal);
-                    stage.insert(meta);
-                });
-                Q.load("personajes.json,personajes.png,fondo.png, fondo.json,collision.json", function(){
-                    Q.sheet("fondo","fondo.png", {tilew:32, tileh:32});
-                    Q.compileSheets("personajes.png","personajes.json");
-                    Q.stageScene("nivel1",0);
-                });
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <title>Prueba Quintus</title>
+    <script src="lib/quintus.js"> </script>
+    <script src="lib/quintus_scenes.js"> </script>
+    <script src="lib/quintus_2d.js"> </script>
+    <script src="lib/quintus_sprites.js"> </script>
+    <script src="lib/quintus_input.js"> </script>
+    <script src="lib/quintus_anim.js"> </script>
+    <script src="lib/quintus_touch.js"> </script>
+    <script src="lib/quintus_ui.js"> </script>
+    <script src="scripts/metodos.js"> </script>
+  </head>
+  <body>
+    <script>
+      window.onload = function(){
+        var Q = window.Q = Quintus().include("Sprites,Scenes,2D,UI,Touch,Anim,Input")
+          .setup({width:380, height:480}).touch();
+        //Creo los valores de colisiones
+        Q.SPRITE_NONE = 0;
+        Q.SPRITE_OTROS = 1;
+        Q.SPRITE_PJ = 2;
+        //Creamos la escena nivel1
+        Q.scene("nivel1",function(stage){
+            var colisiones = new Q.TileLayer({dataAsset: "collision.json",sheet:"fondo",type:Q.SPRITE_OTROS});
+            var background = new Q.TileLayer({dataAsset: "fondo.json",sheet:"fondo",type:Q.SPRITE_NONE});
+            stage.collisionLayer(colisiones);
+            stage.insert(background);
+            //Creo jugador principal
+            var principal = new Q.Sprite({
+                x:30,
+                y:10,
+                sheet:"jugador",
+                type:Q.SPRITE_PJ,
+                collisionMask: Q.SPRITE_OTROS
+            });
+            //Añado el viewport
+            stage.add("viewport").follow(principal,{x:true,y:true},{minX:0,maxX:background.p.w,minY:0,
+            maxY:background.p.h});
+            //Agrego evento al personaje
+            window.addEventListener("keydown",function(e){
+              switch (e.key) {
+                case "ArrowRight":
+                  principal.p.vx = 130;
+                  break;
+                case "ArrowLeft":
+                  principal.p.vx = -130;
+                  break;
+                case "ArrowUp":
+                  velocidadY(principal);
+                  break;
+              }
+            });
+          window.addEventListener("keyup",function(){
+            switch (e.key) {
+              case "ArrowRight":
+                principal.p.vx = 0;
+                break;
+              case "ArrowLeft":
+                principal.p.vx = 0;
+                break;
+              case "ArrowUp":
+                principal.p.vy = 0;
+                break;
             }
-        </script>
-    </body>
+          })
+
+          //Creo final juego
+          var meta = new Q.Sprite({
+              x:background.p.w - 35,
+              y:145,
+              sheet:"meta",
+              type:Q.SPRITE_OTROS
+          });
+          principal.add('2d');
+          // principal.add('platformerControls');
+          // principal.add('stepControls');
+          meta.add('2d');
+          stage.insert(principal);
+          stage.insert(meta);
+        });
+        Q.load("personajes.json,personajes.png,fondo.png, fondo.json,collision.json", function(){
+          Q.sheet("fondo","fondo.png", {tilew:32, tileh:32});
+          Q.compileSheets("personajes.png","personajes.json");
+          Q.stageScene("nivel1",0);
+        });
+      }
+    </script>
+  </body>
 </html>
