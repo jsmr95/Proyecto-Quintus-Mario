@@ -14,7 +14,7 @@
     <script src="lib/quintus_ui.js"> </script>
     <script src="scripts/metodos.js"> </script>
   </head>
-  <body> //PRUEBO GITHUB EN WINDOWS 
+  <body>
     <script>
       window.onload = function(){
         var Q = window.Q = Quintus().include("Sprites,Scenes,2D,UI,Touch,Anim,Input")
@@ -60,7 +60,7 @@
               }
             });
 
-          window.addEventListener("keyup",function(){
+          window.addEventListener("keyup",function(e){
             switch (e.key) {
               case "ArrowRight":
                 principal.p.vx = 0;
