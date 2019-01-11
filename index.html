@@ -83,6 +83,17 @@
             type:Q.SPRITE_OTROS
           });
 
+          //Creo un malo
+          var malo1 = new Q.Sprite({
+            x:55,
+            y:100,
+            gravity: 1,
+            sheet:"maloIzq",
+            type:Q.SPRITE_OTROS
+          });
+          malo1.add('2d');
+          stage.insert(malo1);
+
           //Añado evento a la meta
           meta.on("hit",function(collision){
             if (collision.obj.isA("Sprite")) {
