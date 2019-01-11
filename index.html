@@ -49,7 +49,7 @@
             window.addEventListener("keydown",function(e){
               switch (e.key) {
                 case "ArrowRight":
-                  principal.p.vx = 130;
+                  principal.p.vx = 430;
                   break;
                 case "ArrowLeft":
                   principal.p.vx = -130;
@@ -74,7 +74,7 @@
             }
           })
 
-          //Creo final juego
+          //Creo meta juego
           var meta = new Q.Sprite({
             x:background.p.w - 35,
             y:100,
@@ -83,6 +83,37 @@
             type:Q.SPRITE_OTROS
           });
 
+          //Añado evento a la meta
+          meta.on("hit",function(collision){
+            if (collision.obj.isA("Sprite")) {
+              Q.stageScene("endGame",1);
+              this.destroy();
+            }
+          });
+
+          //Creo la escena al finalizar
+          Q.scene("endGame", function(stage){
+            var box = new Q.UI.Container({
+              x: Q.width/2,
+              y: Q.height/3,
+              fill: "rgba(0,0,0,0.5)"
+            })
+            stage.insert(box);
+            var button = new Q.UI.Button({
+              x:0,
+              y:0,
+              fill: "#CCCCCC",
+              label: "Jugar de nuevo"
+            });
+            box.insert(button);
+            box.fit(20);
+            button.on("click",function(){
+              Q.stageScene("nivel1",0);
+              stage.stop();
+            })
+          })
+
+          //Añado metodos e inserto
           principal.add('2d');
           meta.add('2d');
           stage.insert(principal);
