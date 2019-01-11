@@ -1,4 +1,6 @@
 {
     "jugador":{"sx":0,"sy":0,"cols":1,"tilew":31,"tileh":31,"frames":1},
-    "meta":{"sx":32,"sy":1,"cols":1,"tilew":31,"tileh":30,"frames":1}
+    "meta":{"sx":32,"sy":1,"cols":1,"tilew":31,"tileh":30,"frames":1},
+    "maloIzq":{"sx":64,"sy":1,"cols":1,"tilew":31,"tileh":30,"frames":1},
+    "maloDer":{"sx":96,"sy":1,"cols":1,"tilew":31,"tileh":30,"frames":1}
 }
