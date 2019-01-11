@@ -85,14 +85,26 @@
 
           //Creo un malo
           var malo1 = new Q.Sprite({
-            x:55,
+            vx: -50,
+            x:350,
             y:100,
             gravity: 1,
             sheet:"maloIzq",
-            type:Q.SPRITE_OTROS
+            type:Q.SPRITE_OTROS,
           });
           malo1.add('2d');
           stage.insert(malo1);
+          var compruebaVelocidadMalo = setInterval(function(){
+            if (malo1.p.vx == 0){
+              if (malo1.p.sheet == "maloIzq") {
+                malo1.p.vx = 50;
+                malo1.p.sheet = "maloDer";
+              }else {
+                malo1.p.vx = -50;
+                malo1.p.sheet = "maloIzq";
+              }
+            }
+          },10);
 
           //Añado evento a la meta
           meta.on("hit",function(collision){
