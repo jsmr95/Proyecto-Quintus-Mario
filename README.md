@@ -7,7 +7,8 @@ Quintus.
   - No puedes chocar con ningún goomba (malo de mario).
   - Para ganar tienes que coger la estrella del final del mapa.
 
-  De esta forma podrías insertar una imagen
+  IMAGENES DEL JUEGO :
+  
   ![juego1][img1]
   ![jueg2][img2]
   ![jueg3][img3]
