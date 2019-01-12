@@ -105,11 +105,17 @@
               }
             }
           },10);
+          malo1.on("hit",function(collision){
+            if (collision.obj.isA("Sprite")){
+              Q.stageScene("endGame",1,{label: "Has Perdido!"});
+              this.destroy();
+            }
+          });
 
           //Añado evento a la meta
           meta.on("hit",function(collision){
             if (collision.obj.isA("Sprite")) {
-              Q.stageScene("endGame",1);
+              Q.stageScene("endGame",1,{label: "Has Ganado!"});
               this.destroy();
             }
           });
@@ -128,6 +134,12 @@
               fill: "#CCCCCC",
               label: "Jugar de nuevo"
             });
+            var label = new Q.UI.Text({
+              x:10,
+              y:-10 -button.p.h,
+              label: stage.options.label
+            });
+            box.insert(label);
             box.insert(button);
             box.fit(20);
             button.on("click",function(){
