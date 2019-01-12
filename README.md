@@ -6,3 +6,8 @@ Quintus.
   - Para jugar solo hay que usar las flechas.
   - No puedes chocar con ningún goomba (malo de mario).
   - Para ganar tienes que coger la estrella del final del mapa.
+
+  !(/images/juego1.png)
+  !(/images/juego2.png)
+  !(/images/juego3.png)
+  !(/images/juego4.png)
