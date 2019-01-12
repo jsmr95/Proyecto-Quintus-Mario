@@ -108,7 +108,7 @@
           malo1.on("hit",function(collision){
             if (collision.obj.isA("Sprite")){
               Q.stageScene("endGame",1,{label: "Has Perdido!"});
-              this.destroy();
+              principal.destroy();
             }
           });
 
@@ -137,7 +137,7 @@
           malo2.on("hit",function(collision){
             if (collision.obj.isA("Sprite")){
               Q.stageScene("endGame",1,{label: "Has Perdido!"});
-              this.destroy();
+              principal.destroy();
             }
           });
 
@@ -145,7 +145,7 @@
           meta.on("hit",function(collision){
             if (collision.obj.isA("Sprite")) {
               Q.stageScene("endGame",1,{label: "Has Ganado!"});
-              this.destroy();
+              principal.destroy();
             }
           });
 
